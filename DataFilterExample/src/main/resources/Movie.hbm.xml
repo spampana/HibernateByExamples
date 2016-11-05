@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.javamakeuse.datafilter"> 
+	<class name="Movie" table="movie">
+		<id name="id" type="java.lang.Long" column="id">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="string" column="name"/>
+		<property name="year" type="string" column="released_in_year"/>
+
+		 <filter name="movieFilter" condition="released_in_year = :yearParam"/>
+	</class>
+<!--http://www.javamakeuse.com/2015/02/data-filter-example-in-hibernate-using.html-->
+	<filter-def name="movieFilter">
+		<filter-param name="yearParam" type="java.lang.String" />
+	</filter-def>
+
+</hibernate-mapping>
